@@ -15,7 +15,8 @@ public class TransformerAgent {
 
 		instrumentation.addTransformer(new ClassFileTransformer() {
 			@Override
-			public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) {
+			public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, 
+						ProtectionDomain protectionDomain, byte[] classfileBuffer) {
 
 				ClassPool pool = ClassPool.getDefault();
 
@@ -39,10 +40,16 @@ public class TransformerAgent {
 								String type = cTfield.getType().getName();
 								String name = cTfield.getName();
 
-								args.append(type).append(" ");
-								args.append(name).append(", ");
+								args.append(type)
+									.append(" ");
+								args.append(name)
+									.append(", ");
 
-								body.append("this.").append(name).append(" = ").append(name).append(";\n");
+								body.append("this.")
+									.append(name)
+									.append(" = ")
+									.append(name)
+									.append(";\n");
 							}
 						}
 
@@ -52,7 +59,7 @@ public class TransformerAgent {
 						cc.addConstructor(CtNewConstructor.make(args.append(body).toString(),cc));
 
 						System.out.println("Agent has created in the class - " + className
-								+ " a new constructor:\n" + args);
+								 + " a new constructor:\n" + args);
 
 						return cc.toBytecode();
 					}
