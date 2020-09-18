@@ -45,7 +45,7 @@ public class TransformerAgent {
 								args.append(name)
 									.append(", ");
 
-								body.append("this.")
+								body.append("	this.")
 									.append(name)
 									.append(" = ")
 									.append(name)
