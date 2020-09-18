@@ -4,15 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+         
     <groupId>org.example</groupId>
     <artifactId>class-transform-app</artifactId>
     <version>1.0</version>
 
+         
     <properties>
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.source>11</maven.compiler.source>
     </properties>
 
+         
     <dependencies>
         <dependency>
             <groupId>rainbovv.custom.annotations</groupId>
@@ -27,6 +30,7 @@
         </dependency>
     </dependencies>
 
+         
     <build>
         <plugins>
             <plugin>
@@ -37,6 +41,11 @@
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                     <archive>
+                        <index>true</index>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
                         <manifestEntries>
                             <Main-Class>main.Application</Main-Class>
                         </manifestEntries>
@@ -44,12 +53,14 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <id>make-assembly</id>
                         <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-
-
 </project>
