@@ -1,10 +1,6 @@
 package original;
 
 
-import customAnnotation.AddConstructor;
-
-// ADD CONSTRUCTOR THAT SETS id = 100
-@AddConstructor
 public class Box{
 
 	private int id;
@@ -17,8 +13,7 @@ public class Box{
 		return id;
 	}
 
-
 	public void setId(int id) {
-
+		this.id = id;
 	}
 }

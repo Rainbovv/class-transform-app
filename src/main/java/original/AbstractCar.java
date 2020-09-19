@@ -3,9 +3,8 @@ package original;
 import customAnnotation.AddConstructor;
 
 @AddConstructor
-public class Car extends AbstractCar{
+public abstract class AbstractCar {
 
 	private String model;
 	private int year;
-
 }

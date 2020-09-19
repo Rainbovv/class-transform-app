@@ -1,6 +1,6 @@
 package main;
 
-
+import original.AbstractCar;
 import original.Box;
 import original.Car;
 
@@ -10,7 +10,6 @@ public class Application {
 
 		Box b = new Box();
 
-		Car c = new Car();
-
+		AbstractCar c = new Car();
 	}
 }
