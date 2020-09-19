@@ -2,6 +2,7 @@ package instruments;
 
 import javassist.*;
 
+import customAnnotation.AddConstructor;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.Instrumentation;
 import java.lang.reflect.Modifier;
@@ -28,8 +29,8 @@ public class TransformerAgent {
 					String packageName = className.substring(0,className.indexOf("."));
 					String classNameWOPackage = className.substring(className.indexOf(".") + 1);
 
-					if (packageName.equals("original") && !cc.isInterface() && !cc.isInterface()
-							&& cc.hasAnnotation(customAnnotation.AddConstructor.class)) {
+					if (packageName.equals("original") && cc.hasAnnotation(AddConstructor.class)
+						&& !cc.isInterface() && !Modifier.isAbstract(cc.getModifiers())) {
 
 						StringBuilder args = new StringBuilder("public " + classNameWOPackage + "(");
 						StringBuilder body = new StringBuilder("{\n");
