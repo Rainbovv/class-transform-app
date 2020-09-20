@@ -36,7 +36,7 @@ public class TransformerAgent {
 						StringBuilder body = new StringBuilder("{\n");
 
 						for (CtField cTfield : cc.getDeclaredFields()) {
-							if (cTfield.getModifiers() == Modifier.PRIVATE) {
+							if ((cTfield.getModifiers() & Modifier.PRIVATE) != 0) {
 
 								String type = cTfield.getType().getName();
 								String name = cTfield.getName();
